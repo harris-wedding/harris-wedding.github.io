@@ -21,12 +21,12 @@ App = {
   },
 
   getCurrentRoute: function () {
-    this.getPatterns(window.location.hash.split('#')[1] || 'overview');
+    this.getPatterns(window.location.hash.split('#')[1] || 'home');
     this.updateSelectedNav(window.location.hash);
   },
 
   updateRoute: function (route) {
-    console.log('updateRoute: ', route);
+    // console.log('updateRoute: ', route);
     window.location.hash = route;
   },
 

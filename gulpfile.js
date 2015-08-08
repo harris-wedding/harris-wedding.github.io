@@ -25,24 +25,6 @@ gulp.task('stylint', function() {
     .pipe(stylint({config: '.stylintrc'}))
 });
 
-gulp.task('sass', function () {
-  var sass = require('gulp-sass');
-
-  return gulp.src(['src/**/*.sass'])
-    .pipe(sass({indentedSyntax: true}))
-    .pipe(gulp.dest('./dest/css'));
-});
-
-gulp.task('less', function () {
-  var less = require('gulp-less');
-
-  return gulp.src(['src/**/*.less', '!src/**/_*', '!./src/less/lib/**/*.less'])
-    .pipe(less({
-      paths: [ path.join(__dirname, 'less', 'includes') ]
-    }))
-    .pipe(gulp.dest('./dest/css'));
-});
-
 gulp.task('templatizer', function() {
   var templatizer = require('templatizer');
 
@@ -67,8 +49,6 @@ gulp.task('jade', function() {
 gulp.task('watch', function () {
   gulp.watch(['src/**/*.styl'], ['stylus', 'stylint']);
   gulp.watch(['src/**/*.jade'], ['jade', 'templatizer']);
-  gulp.watch(['src/**/*.less'], ['less']);
-  gulp.watch(['src/**/*.sass'], ['sass']);
   gulp.watch(['src/**/*.js'], ['copy-js']);
 });
 
@@ -98,6 +78,13 @@ gulp.task('copy-js', function() {
 
   gulp.src('bower_components/**/*')
     .pipe(gulp.dest('./dest/'));
+
+});
+
+gulp.task('copy-node-modules', function() {
+  gulp.src('node_modules/material-design-lite/**/*')
+   .pipe(gulp.dest('./dest/node_modules/material-design-lite'));
+
 });
 
 gulp.task('gh-pages', function(callback) {
@@ -106,6 +93,7 @@ gulp.task('gh-pages', function(callback) {
     ['stylus', 'jade'],
     ['templatizer'],
     ['copy-js'],
+    ['copy-node-modules'],
     ['deploy'],
     callback);
 });
@@ -113,11 +101,11 @@ gulp.task('gh-pages', function(callback) {
 gulp.task('default', function(callback) {
   runSequence(
     ['clean'],
-    ['stylus', 'stylint', 'jade'],
-    ['less', 'sass'],
+    ['stylus', 'stylint'],
     ['jade'],
     ['templatizer'],
     ['copy-js'],
+    ['copy-node-modules'],
     ['connect', 'watch'],
     callback);
 });
