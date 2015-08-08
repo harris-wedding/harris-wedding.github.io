@@ -37,8 +37,6 @@ App = {
       tmpl = this.templatizer["_" + file];
 
     container.html(tmpl);
-
-    Prism.highlightAll();
   },
 
   updateSelectedNav: function (hash) {
