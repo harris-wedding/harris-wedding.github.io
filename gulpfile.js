@@ -12,8 +12,11 @@ gulp.task('stylus', function () {
     jeet = require('jeet'),
     rupture = require('rupture');
 
-  return gulp.src(['src/**/*.styl', '!**/_*', '!./styl/lib/**/*.styl'])
-    .pipe(stylus({use: [nib(), jeet(), rupture()]}))
+  return gulp.src(['src/styl/styl.styl'])
+    .pipe(stylus({
+      use: [nib(), jeet(), rupture()],
+      'include css': true
+      }))
     .pipe(flatten())
     .pipe(gulp.dest('./dest/css'))
     .pipe(connect.reload());
@@ -23,6 +26,11 @@ gulp.task('stylint', function() {
   var stylint = require('gulp-stylint');
   return gulp.src(['src/**/*.styl', '!./src/styl/lib/**/*.styl'])
     .pipe(stylint({config: '.stylintrc'}));
+});
+
+gulp.task('images', function() {
+  return gulp.src('./src/images/**/*')
+    .pipe(gulp.dest('./dest/images'));
 });
 
 gulp.task('templatizer', function() {
@@ -50,6 +58,7 @@ gulp.task('watch', function () {
   gulp.watch(['src/**/*.styl'], ['stylus', 'stylint']);
   gulp.watch(['src/**/*.jade'], ['jade', 'templatizer']);
   gulp.watch(['src/**/*.js'], ['copy-js']);
+  gulp.watch(['src/images/**/*'], ['images']);
 });
 
 gulp.task('connect', function() {
@@ -149,6 +158,7 @@ gulp.task('gh-pages', function(callback) {
     ['copy-vendor-js'],
     ['templatizer'],
     ['copy-node-modules'],
+    ['images'],
     ['deploy'],
     callback);
 });
@@ -162,6 +172,7 @@ gulp.task('default', function(callback) {
     ['copy-vendor-js'],
     ['templatizer'],
     ['copy-node-modules'],
+    ['images'],
     ['connect', 'watch'],
     callback);
 });
