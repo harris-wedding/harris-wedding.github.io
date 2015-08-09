@@ -9,7 +9,6 @@ App = {
     this.getCurrentRoute();
     this.bindNav();
     this.initializeRouter();
-
   },
 
   initializeRouter: function () {
@@ -54,6 +53,9 @@ App = {
       tmpl = window.App.templatizer["_" + file];
 
     container.html(tmpl);
+
+    // Fire JS that has to wait to load
+    this.fireCustomJS();
   },
 
   updateSelectedNav: function (hash) {
@@ -61,6 +63,18 @@ App = {
 
     navListLink.removeClass('selected');
     $('[href="' + hash + '"]').addClass('selected');
+  },
+
+  fireCustomJS: function () {
+    this.counter();
+  },
+
+  counter: function () {
+   $('.countdown').countdown("2016/10/07", function(event) {
+     $(this).text(
+       event.strftime('%D')
+     );
+   });
   }
 
 };
