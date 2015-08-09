@@ -1,10 +1,29 @@
-var App = App || {};
+var App = window.App;
+
+var LocationBar = require("location-bar");
+
 
 App = {
   init: function () {
     this.currentPattern = '';
     this.getCurrentRoute();
     this.bindNav();
+    this.initializeRouter();
+
+  },
+
+  initializeRouter: function () {
+    var locationBar = new LocationBar();
+
+    // listen to all changes to the location bar
+    locationBar.onChange(function (path) {
+      // console.log("the current url is", path);
+      App.getPatterns(path);
+    });
+
+    locationBar.start({
+      pushState: false
+    });
   },
 
   bindNav: function () {
@@ -15,7 +34,6 @@ App = {
       var file = e.target.hash.split('#')[1];
 
       self.updateRoute(file);
-      self.getPatterns(file);
       self.updateSelectedNav(e.target.hash);
     });
   },
@@ -26,7 +44,6 @@ App = {
   },
 
   updateRoute: function (route) {
-    // console.log('updateRoute: ', route);
     window.location.hash = route;
   },
 
@@ -34,7 +51,7 @@ App = {
     if (this.currentPattern === file) {return false;}
     this.currentPattern = file;
     var container = $('[data-content-block]'),
-      tmpl = this.templatizer["_" + file];
+      tmpl = window.App.templatizer["_" + file];
 
     container.html(tmpl);
   },

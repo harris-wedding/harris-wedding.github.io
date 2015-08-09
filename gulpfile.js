@@ -22,14 +22,14 @@ gulp.task('stylus', function () {
 gulp.task('stylint', function() {
   var stylint = require('gulp-stylint');
   return gulp.src(['src/**/*.styl', '!./src/styl/lib/**/*.styl'])
-    .pipe(stylint({config: '.stylintrc'}))
+    .pipe(stylint({config: '.stylintrc'}));
 });
 
 gulp.task('templatizer', function() {
   var templatizer = require('templatizer');
 
   templatizer('./src/**/*.jade', './dest/templatizer.js', {
-    namespace: 'App',
+    namespace: 'window.App',
     dontremoveMixins: true
   });
 
@@ -72,18 +72,72 @@ gulp.task('deploy', function() {
     .pipe(ghPages());
 });
 
-gulp.task('copy-js', function() {
-  gulp.src('src/js/**/*')
-   .pipe(gulp.dest('./dest/js/'));
+gulp.task('copy-vendor-js', function() {
 
   gulp.src('bower_components/**/*')
     .pipe(gulp.dest('./dest/'));
 
 });
 
+gulp.task('copy-js', function () {
+  var browserify = require('browserify');
+  var source = require('vinyl-source-stream');
+  var buffer = require('vinyl-buffer');
+  var globby = require('globby');
+  var through = require('through2');
+  var uglify = require('gulp-uglify');
+  var sourcemaps = require('gulp-sourcemaps');
+  var reactify = require('reactify');
+  var gutil = require('gulp-util');
+
+  // gulp expects tasks to return a stream, so we create one here.
+  var bundledStream = through();
+
+  bundledStream
+    // turns the output bundle stream into a stream containing
+    // the normal attributes gulp plugins expect.
+    .pipe(source('app.js'))
+    // the rest of the gulp task, as you would normally write it.
+    // here we're copying from the Browserify + Uglify2 recipe.
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+      // Add gulp plugins to the pipeline here.
+    .on('error', gutil.log)
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./dest/js/'))
+    .pipe(connect.reload());
+
+  // "globby" replaces the normal "gulp.src" as Browserify
+  // creates it's own readable stream.
+  globby([
+    './src/js/app.js',
+    './src/js/exports.js',
+  ], function(err, entries) {
+    // ensure any errors from globby are handled
+    if (err) {
+      bundledStream.emit('error', err);
+      return;
+    }
+
+    // create the Browserify instance.
+    var b = browserify({
+      entries: entries,
+      debug: true,
+      transform: [reactify]
+    });
+
+    // pipe the Browserify stream into the stream we created earlier
+    // this starts our gulp pipeline.
+    b.bundle().pipe(bundledStream);
+  });
+
+  // finally, we return the stream, so gulp knows when this task is done.
+  return bundledStream;
+});
+
 gulp.task('copy-node-modules', function() {
-  gulp.src('node_modules/material-design-lite/**/*')
-   .pipe(gulp.dest('./dest/node_modules/material-design-lite'));
+  gulp.src('node_modules/**/*')
+   .pipe(gulp.dest('./dest/node_modules'));
 
 });
 
@@ -91,8 +145,9 @@ gulp.task('gh-pages', function(callback) {
   runSequence(
     ['clean'],
     ['stylus', 'jade'],
-    ['templatizer'],
     ['copy-js'],
+    ['copy-vendor-js'],
+    ['templatizer'],
     ['copy-node-modules'],
     ['deploy'],
     callback);
@@ -103,8 +158,9 @@ gulp.task('default', function(callback) {
     ['clean'],
     ['stylus', 'stylint'],
     ['jade'],
-    ['templatizer'],
     ['copy-js'],
+    ['copy-vendor-js'],
+    ['templatizer'],
     ['copy-node-modules'],
     ['connect', 'watch'],
     callback);
