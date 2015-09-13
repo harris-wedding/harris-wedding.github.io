@@ -1,19 +1,20 @@
-header.mdl-layout__header
+header.mdl-layout__header.mdl-layout__header--transparent
   .mdl-layout__header-row
     // Title
-    span.mdl-layout-title.header-title Donelle &amp; Ashton Wedding
+    //- span.mdl-layout-title Title
     // Add spacer, to align navigation to the right
     .mdl-layout-spacer
-    // Navigation. We hide it in small screens.
-    nav.mdl-navigation.mdl-layout--large-screen-only
+    // Navigation
+    nav.mdl-navigation.large-only-flex
       a.mdl-navigation__link(href="#home") Home
       a.mdl-navigation__link(href="#story") Our Story
       a.mdl-navigation__link(href="#party") Wedding Party
       a.mdl-navigation__link(href="#photos") Photos
       a.mdl-navigation__link(href="#accomodations") Accomodations
       a.mdl-navigation__link(href="#registry") Registry
-.mdl-layout__drawer.mdl-layout--small-screen-only
-  span.mdl-layout-title.header-title Donelle &amp; Ashton Wedding
+      a.mdl-navigation__link(href="#rsvp") RSVP
+.mdl-layout__drawer.small-only
+  //- span.mdl-layout-title Title
   nav.mdl-navigation
     a.mdl-navigation__link(href="#home") Home
     a.mdl-navigation__link(href="#story") Our Story
@@ -21,7 +22,5 @@ header.mdl-layout__header
     a.mdl-navigation__link(href="#photos") Photos
     a.mdl-navigation__link(href="#accomodations") Accomodations
     a.mdl-navigation__link(href="#registry") Registry
-
-
-
+    a.mdl-navigation__link(href="#rsvp") RSVP
 

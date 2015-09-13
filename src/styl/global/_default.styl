@@ -1,5 +1,5 @@
 body
-  background linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../images/IMG_9437.JPG') 30% 40%
+  background linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/IMG_9557_edit.JPG') 40% 50%
   background-size cover
   color $white
   font-family $default
@@ -10,7 +10,8 @@ body
 .row
   cf()
 
-
+.large-only, large-only-flex
+  display none
 
 // NAV
 .layout-transparent
@@ -21,7 +22,7 @@ body
     color white
 
 .mdl-layout__header
-  background-color rgba(0,0,0, .5)
+  background-color rgba(0,0,0,0)
 
 .mdl-layout__header .mdl-layout__drawer-button
   background none
@@ -34,4 +35,27 @@ body
   font-family $script
   font-size 1.7em
 
+
++above(48em)
+  .small-only
+    display none
+
+  .large-only
+    display inline-block
+
+  .large-only-flex
+    display flex
+
+  .mdl-layout__drawer-button
+    display none
+
+
+
++below(1024px)
+  .mdl-layout__header
+    display block
+
++below(767px)
+  .mdl-layout__header
+    display none
 

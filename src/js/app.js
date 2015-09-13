@@ -72,7 +72,7 @@ App = {
   counter: function () {
    $('.countdown').countdown("2016/10/07", function(event) {
      $(this).text(
-       event.strftime('%D')
+       event.strftime('%D days to go')
      );
    });
   }
