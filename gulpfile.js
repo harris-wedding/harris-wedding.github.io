@@ -77,7 +77,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('deploy', function() {
-  return gulp.src('./dest/**/*')
+  return gulp.src('./.publish/**/*')
     .pipe(ghPages({
         'branch': 'master'
       }));
@@ -209,9 +209,15 @@ gulp.task('copy-node-modules', function() {
 
 });
 
+gulp.task('cname', function() {
+  gulp.src('CNAME')
+   .pipe(gulp.dest('./dest'));
+});
+
 gulp.task('gh-pages', function(callback) {
   runSequence(
     ['clean'],
+    ['cname'],
     ['stylus', 'jade'],
     ['browserify-js'],
     ['browserify-vendor-js'],
