@@ -78,7 +78,9 @@ gulp.task('clean', function () {
 
 gulp.task('deploy', function() {
   return gulp.src('./dest/**/*')
-    .pipe(ghPages());
+    .pipe(ghPages({
+        'branch': 'master'
+      }));
 });
 
 gulp.task('copy-vendor-js', function() {
