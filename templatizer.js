@@ -22,7 +22,7 @@
 
     // _home.jade compiled template
     templatizer["_home"] = function tmpl__home() {
-        return '<section class="home"><h2 class="home-title">Donelle &amp; Ashton</h2><h3 class="home-date">October 7th, 2016 - Montego Bay, Jamaica</h3></section>';
+        return '<section class="home"><h2 class="home-title">Donelle &amp; Ashton</h2><h3 class="home-date">October 7th, 2016 - Montego Bay, Jamaica <br/> <br/>\n(More info coming soon)</h3></section>';
     };
 
     // _party.jade compiled template
@@ -47,12 +47,12 @@
 
     // _header.jade compiled template
     templatizer["_header"] = function tmpl__header() {
-        return '<div class="container row logo-wrap"><button class="nav-button"><span class="nav-button-row"></span><span class="nav-button-row"></span><span class="nav-button-row"></span></button><h1 class="header-logo"><a href="./" class="header-logo-link"><span class="d">D</span><span class="a">A</span></a></h1></div><nav class="container row main-nav"><li><a href="#home">Home</a></li><li><a href="#story">Our Story</a></li><li><a href="#party">Wedding Party</a></li><li><a href="#photos">Photos</a></li><li><a href="#accomodations">Accomodations</a></li><li><a href="#registry">Registry</a></li><li><a href="#rsvp">RSVP</a></li></nav>';
+        return '<div class="container row logo-wrap"><h1 class="header-logo"><a href="./" class="header-logo-link"><span class="d">D</span><span class="a">A</span></a></h1></div>';
     };
 
     // index.jade compiled template
     templatizer["index"] = function tmpl_index() {
-        return '<!DOCTYPE html(lang=\'en\')><head><title>Donelle &amp; Ashton Wedding</title><meta name="viewport" content="width=device-width, initial-scale=1"/><meta http-equiv="Content-Type" content="text/html;charset=utf-8"/><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/><link href="http://fonts.googleapis.com/css?family=Rouge+Script|Lato:400,300italic,300,100italic,100,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css"/><link rel="stylesheet" type="text/css" href="css/styl.css"/></head><body><header class="header"><div class="container row logo-wrap"><button class="nav-button"><span class="nav-button-row"></span><span class="nav-button-row"></span><span class="nav-button-row"></span></button><h1 class="header-logo"><a href="./" class="header-logo-link"><span class="d">D</span><span class="a">A</span></a></h1></div><nav class="container row main-nav"><li><a href="#home">Home</a></li><li><a href="#story">Our Story</a></li><li><a href="#party">Wedding Party</a></li><li><a href="#photos">Photos</a></li><li><a href="#accomodations">Accomodations</a></li><li><a href="#registry">Registry</a></li><li><a href="#rsvp">RSVP</a></li></nav></header><main class="mdl-layout__content"><div class="page-content"><section data-content-block="data-content-block" class="container main-content"></section></div></main><script src="jquery/dist/jquery.min.js" type="text/javascript"></script><script src="js/vendor.js" type="text/javascript"></script><script src="js/app.js" type="text/javascript"></script><script src="templatizer.js" type="text/javascript"></script></body>';
+        return '<!DOCTYPE html(lang=\'en\')><head><title>Donelle &amp; Ashton Wedding</title><meta name="viewport" content="width=device-width, initial-scale=1"/><meta http-equiv="Content-Type" content="text/html;charset=utf-8"/><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/><link href="http://fonts.googleapis.com/css?family=Rouge+Script|Lato:400,300italic,300,100italic,100,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css"/><link rel="stylesheet" type="text/css" href="css/styl.css"/></head><body><header class="header"><div class="container row logo-wrap"><h1 class="header-logo"><a href="./" class="header-logo-link"><span class="d">D</span><span class="a">A</span></a></h1></div></header><main class="mdl-layout__content"><div class="page-content"><section data-content-block="data-content-block" class="container main-content"></section></div></main><script src="jquery/dist/jquery.min.js" type="text/javascript"></script><script src="js/vendor.js" type="text/javascript"></script><script src="js/app.js" type="text/javascript"></script><script src="templatizer.js" type="text/javascript"></script></body>';
     };
 
     return templatizer;
