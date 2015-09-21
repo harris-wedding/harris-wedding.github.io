@@ -349,6 +349,7 @@ App = {
     this.getCurrentRoute();
     this.bindNav();
     this.initializeRouter();
+    this.bindMenuButton();
   },
 
   initializeRouter: function () {
@@ -365,10 +366,20 @@ App = {
     });
   },
 
+  bindMenuButton: function () {
+    $('.nav-button').click(function () {
+      $( this ).toggleClass('expanded');
+      $( '.main-nav' ).toggleClass('expanded');
+    });
+  },
+
   bindNav: function () {
     var self = this;
     $('a').click(function (e) {
       e.preventDefault();
+
+      $('.nav-button').toggleClass('expanded');
+      $( '.main-nav' ).toggleClass('expanded');
 
       var file = e.target.hash.split('#')[1];
 
