@@ -3,7 +3,8 @@ var gulp = require("gulp"),
   path = require('path'),
   ghPages = require('gulp-gh-pages'),
   clean = require('gulp-clean'),
-  runSequence = require('run-sequence');
+  runSequence = require('run-sequence'),
+  gutil = require('gulp-util');
 
 gulp.task('stylus', function () {
   var stylus = require("gulp-stylus"),
@@ -77,7 +78,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('deploy', function() {
-  return gulp.src('./.publish/**/*')
+  return gulp.src('./dest/**/*')
     .pipe(ghPages({
         'branch': 'master'
       }));
