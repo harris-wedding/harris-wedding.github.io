@@ -1412,7 +1412,6 @@ large-only-flex {
   }
 }
 .header {
-  padding: 10px;
   *zoom: 1;
 }
 .header:before,
