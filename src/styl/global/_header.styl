@@ -1,6 +1,9 @@
 .header
   cf()
 
+  max-width 1200px
+  margin 0 auto
+
 .nav-button
   -webkit-appearance none
   border 0
@@ -59,9 +62,12 @@
   max-height 0
   background-color $off-white
   width 100%
-  transition all 400ms
+  transition max-height 400ms
   padding 0 1em
   overflow hidden
+  z-index: 10
+  box-shadow 1px 1px 1px rgba(0,0,0,.5)
+  listReset()
 
   &.expanded
     max-height 2000px
@@ -69,14 +75,25 @@
   li
     border-top 1px solid lighten($menu-color, 75%)
 
+
     &:first-child
       border-top none
+
+    &:last-child
+      padding 10px 0 20px
+
 
   a
     text-decoration none
     color $menu-color
     display block
     padding 1em 0
+
+    &.selected, &:hover
+      color $dark-text
+
+    &.rsvp-link
+      color $white
 
 .main-nav .rsvp-link
   display inlin-block
@@ -108,12 +125,16 @@
     top 10px
     float right
     width auto
-    listReset()
+    box-shadow none
 
     li
       border-top none
       display inline-block
       margin 0 10px
+
+      &:last-child
+        padding 0
+
     a
       color $off-white
 
@@ -121,6 +142,13 @@
         text-decoration underline
         color $white
         font-weight 700
+
+      &:hover
+        color $white
+        text-decoration underline
+
+      &.rsvp-link:hover
+        text-decoration none
 
     &.expanded
       background-color none
