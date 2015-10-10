@@ -6,26 +6,32 @@ $totalColumns = 12
 for i in (1..$totalColumns)
   .col-{i}
     col(i /$totalColumns, gutter: 2)
+    cf()
 
 for i in (1..$totalColumns)
   .span-{i}
     span(i /$totalColumns)
+    cf()
 
 
 @media screen and (min-width: 768px)
   for i in (1..$totalColumns)
     .md-col-{i}
       col(i /$totalColumns, gutter: 2)
+      cf()
 
   for i in (1..$totalColumns)
     .md-span-{i}
       span(i /$totalColumns)
+      cf()
 
 @media screen and (min-width: 1024px)
   for i in (1..$totalColumns)
     .lg-col-{i}
       col(i /$totalColumns, gutter: 2)
+      cf()
 
   for i in (1..$totalColumns)
     .lg-span-{i}
       span(i /$totalColumns)
+      cf()

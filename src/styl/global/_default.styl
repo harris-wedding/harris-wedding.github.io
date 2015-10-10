@@ -13,6 +13,10 @@ body
 img
   max-width 100%
 
+p
+  margin 1em
+  line-height 1.6
+
 // Layout
 .row
   cf()
@@ -29,7 +33,7 @@ img
 
 .inner
   background rgba(255,255,255, .9)
-  height 100%
+  min-height 100%
 
 
 // images
@@ -37,6 +41,19 @@ img
   border-radius 10px 0 0 0
 
 
+// Layout
+.left
+  float left
+
+.right
+  float right
+
+
+.page-header
+  text-align center
+  font-family $script
+  font-size 3em
+  font-weight 400
 
 
 
@@ -52,6 +69,9 @@ img
 
   .inner
     border-radius 10px
+
+  .page-header
+    font-size 4em
 
 
 
