@@ -78,6 +78,24 @@
     display block
     padding 1em 0
 
+.main-nav .rsvp-link
+  display inlin-block
+  padding .5em
+  border-radius 2px
+  color $white
+  background $turquoise
+  text-decoration none
+  // max-width 90%
+  text-align center
+  font-weight 700
+  // margin 1em auto
+  box-shadow 2px 2px 2px rgba(0,0,0,.5)
+  position relative
+
+  &:hover
+    box-shadow 1px 1px 1px rgba(0,0,0,.5)
+    background darken($turquoise, 10%)
+
 +above(48em)
   .logo-wrap
     float left

@@ -36,6 +36,10 @@ App = {
   bindNav: function () {
     var self = this;
     $('a').click(function (e) {
+      if ( e.currentTarget.classList.contains('external-link') ) {
+        return;
+      }
+
       e.preventDefault();
 
       if( !e.currentTarget.classList.contains('header-logo-link') ) {
