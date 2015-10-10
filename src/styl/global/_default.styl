@@ -16,6 +16,9 @@ img
 p
   margin 1em
   line-height 1.6
+  color $light-text
+  font-size 1.3em
+  margin 2em
 
 // Layout
 .row
@@ -36,9 +39,6 @@ p
   min-height 100%
 
 
-// images
-.round-top-left
-  border-radius 10px 0 0 0
 
 
 // Layout
@@ -56,7 +56,6 @@ p
   font-weight 400
 
 
-
 +above(48em)
   .small-only
     display none
@@ -69,9 +68,21 @@ p
 
   .inner
     border-radius 10px
+    margin-bottom 100px
 
   .page-header
     font-size 4em
+
+  // images
+  .round-top
+    border-radius 10px 10px 0 0
+
+  .round-top-left
+    border-radius 10px 0 0 0
+
+  .round-bottom-right
+    border-radius 0 0 10px 0
+
 
 
 

@@ -1,0 +1,36 @@
+.cta
+  display block
+  padding 1em
+  border-radius 2px
+  color $white
+  background $turquoise
+  text-decoration none
+  max-width 90%
+  text-align center
+  font-weight 700
+  margin 1em auto
+  box-shadow 2px 2px 2px rgba(0,0,0,.5)
+  position relative
+
+  &:hover
+    box-shadow 1px 1px 1px rgba(0,0,0,.5)
+    background darken($turquoise, 10%)
+
++below(40em)
+  .acc-header-image
+    max-height 200px
+    overflow hidden
+
+    img
+      max-width 200%
+      margin-left -50%
+      margin-top -50px
+
++above(48em)
+  .cta
+    float right
+    width 200px
+    margin-right 5%
+    margin-top -6em
+    z-index 1
+
