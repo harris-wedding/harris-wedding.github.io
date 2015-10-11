@@ -77,6 +77,8 @@ gulp.task('clean', function () {
     }));
 });
 
+// Do not run this
+// Run gh-pages instead
 gulp.task('deploy', function() {
   return gulp.src('./dest/**/*')
     .pipe(ghPages({
