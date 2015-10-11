@@ -376,15 +376,21 @@ App = {
   bindNav: function () {
     var self = this;
     $('a').click(function (e) {
+      if ( e.currentTarget.classList.contains('external-link') ) {
+        return;
+      }
+
       e.preventDefault();
 
-      $('.nav-button').toggleClass('expanded');
-      $( '.main-nav' ).toggleClass('expanded');
+      if( !e.currentTarget.classList.contains('header-logo-link') ) {
+        $('.nav-button').toggleClass('expanded');
+        $( '.main-nav' ).toggleClass('expanded');
+      }
 
-      var file = e.target.hash.split('#')[1];
+      var file = e.currentTarget.hash.split('#')[1];
 
       self.updateRoute(file);
-      self.updateSelectedNav(e.target.hash);
+      self.updateSelectedNav(e.currentTarget.hash);
     });
   },
 
@@ -410,7 +416,7 @@ App = {
   },
 
   updateSelectedNav: function (hash) {
-    var navListLink = $('.nav-list li a');
+    var navListLink = $('.main-nav a');
 
     navListLink.removeClass('selected');
     $('[href="' + hash + '"]').addClass('selected');
