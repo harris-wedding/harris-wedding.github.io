@@ -16,14 +16,39 @@
   font-family $script
   font-weight 100
 
+.countdown-wrap
+  margin-top 10em
+  margin-bottom 2em
+
+  +above(48em)
+    position absolute
+    right 25px
+    bottom 25px
+
 .countdown
-  text-align right
-  font-weight 200
-  margin 0 15px
   line-height 1.5
   font-style italic
-  font-size 1em
-  color $white
+  font-size 3em
+
+.countdown-number
+  color $light-text
+  background white
+  margin 5px
+  padding 0 10px
+  border-radius 5px
+  position relative
+  overflow hidden
+  display inline-block
+
+  &:before
+    content ''
+    background $light-text
+    height 1px
+    width 100px
+    position absolute
+    left -10px
+    top 50%
+
 
 
 

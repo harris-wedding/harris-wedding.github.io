@@ -88,9 +88,14 @@ App = {
 
   counter: function () {
    $('.countdown').countdown("2016/10/07", function(event) {
-     $(this).text(
-       event.strftime('%D days to go')
-     );
+    var individualNumbers = event.strftime('%D').split('');
+
+    var markup = '';
+
+    for (var i = 0; i < individualNumbers.length; i++) {
+      markup += '<span class="countdown-number">' + individualNumbers[i] + '</span>';
+    }
+     $(this).html(markup);
    });
   }
 
