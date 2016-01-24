@@ -22,7 +22,7 @@
 
     // _home.jade compiled template
     templatizer["_home"] = function tmpl__home() {
-        return '<section class="home"><h2 class="home-title">Donelle &amp; Ashton</h2><h3 class="home-date">October 7th, 2016 - Montego Bay, Jamaica</h3></section>';
+        return '<section class="home"><h2 class="home-title">Donelle &amp; Ashton</h2><h3 class="home-date">October 7th, 2016 - Montego Bay, Jamaica</h3><div class="countdown-wrap"><div class="countdown"></div><div class="countdown-text">Days to Go</div></div></section>';
     };
 
     // _party.jade compiled template
