@@ -16,6 +16,8 @@
     box-shadow 1px 1px 1px rgba(0,0,0,.5)
     background darken($turquoise, 10%)
 
+
+
 +below(40em)
   .acc-header-image
     max-height 200px
@@ -27,10 +29,16 @@
       margin-top -50px
 
 +above(48em)
-  .cta
+  .header-cta
     float right
-    width 200px
     margin-right 5%
     margin-top -6em
     z-index 1
+
+    &.book-now
+      float: left
+      margin-left: 5%
+
+  .cta
+    width 200px
 
